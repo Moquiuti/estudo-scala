@@ -145,8 +145,55 @@ object POOscala extends App {
     if produto % 2 == 0} //Esse if é a representação de uma ação chamada gard em Scala, o que trabalhando juntamente com o yeld tratan-se de algo poderoso na linguagem
   yield produto);
 
-  caixaAlta( Array ("oi", "td bem", "com vc") )
+  caixaAlta(Array("oi", "td bem", "com vc"))
+
   def caixaAlta(args: Array[String]) {
     for (a <- args) yield println(a.toUpperCase)
   }
+
+  /**
+   * em Scala Lista são imutáveis e Array são multáveis
+   * Aqui embaixo seguem duas maneiras distintas de seram ffeitas que também apresentam o mesmo resultado
+   * porém vemos uma forma não funcional e outra extremamente funcional aproveitando o poder da linguagem
+   *
+   * @param args
+   */
+  printArgsNaoFuncional(Array("oi", "hello", "scala", "Não Funcional"))
+
+  def printArgsNaoFuncional(args: Array[String]): Unit = {
+    var i = 0;
+    while (i < args.length) {
+      println(args(i))
+      i += 1
+    }
+  }
+
+  printArgsFuncional(Array("oi", "hello", "scala", "Funcional"))
+
+  def printArgsFuncional(args: Array[String]): Unit = {
+    for (i <- args)
+      println(i)
+  }
+
+  print(printArgsFuncional2(Array("oi", "hello", "scala", "Funcional")))
+
+  def printArgsFuncional2(args: Array[String]) = {
+    args.mkString("\n")
+  }
+
+  println("\n" + 2 + " transformado em polegadas é: " + polegadasEmCentimetros(2))
+
+  def polegadasEmCentimetros(polegadas: Double) = polegadas * 2.54
+
+  /**
+   * Desafio 20 do urionlinejudge
+   * Dias de Vida do Usuário
+   */
+  val diasIdade = readLine().toInt
+  val anoIdade = diasIdade / 365
+  val mesIdade = (diasIdade % 365) / 30
+  val diaIdade = (diasIdade % 365) % 30
+  println(s"$anoIdade ano(s)")
+  println(s"$mesIdade mes(s)")
+  println(s"$diaIdade dia(s)")
 }
