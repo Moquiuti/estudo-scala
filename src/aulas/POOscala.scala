@@ -2,11 +2,33 @@ package aulas
 
 object POOscala extends App {
 
+  println("Criando variáveis!");
+  val primeiroValor: Int = 9;
+  val segundoValor: Int = 18;
+
   println("Praticando com métodos de calculos!");
-  println(soma(9, 9));
-  println(fib(9));
-  println(raiz(9));
-  println(fatorial(9));
+  val resultadoSoma = soma(primeiroValor, segundoValor);
+  val fibonati = fib(primeiroValor);
+  val raizQuadrada = raiz(primeiroValor);
+  var minimo = min(primeiroValor, segundoValor);
+  var maximoDivisorComum = mdc(primeiroValor, segundoValor);
+  var mes = mesNome(1);
+  var primeiraFuncao = f1(1);
+  var segundaFuncao = f2(4)
+  var terceiraFuncao = f3(-1);
+
+  println("A soma dos valores é: " + resultadoSoma);
+  println("O fibonatti do valor é: " + fibonati);
+  println("A raiz quadrada do valor é: " + raizQuadrada);
+  println("O fatorial do valor é: " + fatorial(primeiroValor));
+  println("O menor valor dentre eles é: " + minimo);
+  println("O máximo divisor comum dos valores é: " + maximoDivisorComum);
+  println("O mês traduzido é: " + mes);
+  println("O que é isso: " + oqEhIsso(List(1, 2, 3)));
+  println(oqEhIsso2("Scala"));
+  println("Valor da primeira função é: " + primeiraFuncao);
+  println("Valor da segunda função é: " + segundaFuncao);
+  println("Valor da terceira função é: " + terceiraFuncao);
 
   def soma(a: Int, b: Int): Int = return a + b;
 
@@ -15,6 +37,62 @@ object POOscala extends App {
   def raiz(a: Double) = Math.sqrt(a);
 
   def fatorial(x: Int): Int = if (x == 1) 1 else x * fatorial(x - 1)
+
+  def min(a: Int, b: Int) = if (a > b) b else a
+
+  def mdc(a: Int, b: Int) = {
+    var minimo = min(a, b);
+    while (!(a % minimo == 0 && b % minimo == 0)) {
+      minimo = minimo - 1;
+    }
+    minimo;
+  }
+
+  def mesNome(x: Int): String = x match {
+    case 1 => "Janeiro"
+    case 2 => "Fevereiro";
+    case 3 => "Março";
+    case 4 => "Abril";
+    case 5 => "Maio";
+    case 6 => "Junho";
+    case 7 => "Julho";
+    case 8 => "Agosto";
+    case 9 => "Setembro";
+    case 10 => "Outubro";
+    case 11 => "Novembro";
+    case 12 => "Dezembro";
+    case _ => "Informe um mês válido!";
+  }
+
+  def oqEhIsso(algo: Any): String = algo match {
+    case 1 => "É o número 1"
+    case "Oi" => "É uma saudação";
+    case List(_, _, _) => "É uma lista de 3 elementos";
+  }
+
+  def oqEhIsso2(algo: Any): String = algo match {
+    case algo: Int => "O número " + algo
+    case algo: String => "A String " + algo;
+    case List(a, b, c) => "Uma lista com elementos " + a + " " + b + " " + c;
+    case _ => "Qualquer coisa";
+  }
+
+  def f1(x: Double): Double = x match {
+    case x if (x >= 2) => x - 2;
+    case x if (x >= -2 && x < 2) => x * x - 4;
+    case x if (x < -2) => 3;
+  }
+
+  def f2(x: Double): Double = x match {
+    case x if (x < 4) => x + 2;
+    case 4 => 3;
+    case x if (x >= 4) => 6 - x;
+  }
+
+  def f3(x: Double): Double = x match {
+    case x if (x <= -1) => x + 2;
+    case x if (x > -1) => x * x;
+  }
 
 
 }
