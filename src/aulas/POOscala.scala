@@ -1,5 +1,7 @@
 package aulas
 
+import collection.mutable.MutableList
+
 object POOscala extends App {
 
   println("Iniciado esteira de testes!");
@@ -117,5 +119,34 @@ object POOscala extends App {
     Some(s.toInt)
   } catch {
     case e: NumberFormatException => None;
+  }
+
+  val original = List(1, 2, 3);
+  /**
+   * Ambas abaixo representam a mesma ação, somente formas diferentes de serem feitas.
+   */
+  val transformed1 = new MutableList[Int];
+  for (i: Int <- 0 until original.size) transformed1 += original(i) * 2
+  println(transformed1)
+
+  val transformed2 = new MutableList[Int];
+  for (i <- original) transformed2 += i * 2
+  println(transformed2)
+
+  /**
+   * Produto cartesiano
+   * Aqui embaixo também tratan-se do mesmo método escrito de maneiras diferentes.
+   */
+  println(for (i <- List(1, 2, 3); j <- List(4, 5, 6)) yield i * j);
+  println(for {
+    i <- List(1, 2, 3)
+    j <- List(4, 5, 6)
+    produto = i * j;
+    if produto % 2 == 0} //Esse if é a representação de uma ação chamada gard em Scala, o que trabalhando juntamente com o yeld tratan-se de algo poderoso na linguagem
+  yield produto);
+
+  caixaAlta( Array ("oi", "td bem", "com vc") )
+  def caixaAlta(args: Array[String]) {
+    for (a <- args) yield println(a.toUpperCase)
   }
 }
