@@ -2,33 +2,45 @@ package aulas
 
 object POOscala extends App {
 
-  println("Criando variáveis!");
+  println("Iniciado esteira de testes!");
   val primeiroValor: Int = 9;
   val segundoValor: Int = 18;
 
-  println("Praticando com métodos de calculos!");
   val resultadoSoma = soma(primeiroValor, segundoValor);
-  val fibonati = fib(primeiroValor);
-  val raizQuadrada = raiz(primeiroValor);
-  var minimo = min(primeiroValor, segundoValor);
-  var maximoDivisorComum = mdc(primeiroValor, segundoValor);
-  var mes = mesNome(1);
-  var primeiraFuncao = f1(1);
-  var segundaFuncao = f2(4)
-  var terceiraFuncao = f3(-1);
-
   println("A soma dos valores é: " + resultadoSoma);
+
+  val fibonati = fib(primeiroValor);
   println("O fibonatti do valor é: " + fibonati);
+
+  val raizQuadrada = raiz(primeiroValor);
   println("A raiz quadrada do valor é: " + raizQuadrada);
-  println("O fatorial do valor é: " + fatorial(primeiroValor));
+
+  var minimo = min(primeiroValor, segundoValor);
   println("O menor valor dentre eles é: " + minimo);
+
+  var maximoDivisorComum = mdc(primeiroValor, segundoValor);
   println("O máximo divisor comum dos valores é: " + maximoDivisorComum);
+
+  var mes = mesNome(1);
   println("O mês traduzido é: " + mes);
+
+  var primeiraFuncao = f1(1);
+  println("Valor da primeira função é: " + primeiraFuncao);
+
+  var segundaFuncao = f2(4)
+  println("Valor da segunda função é: " + segundaFuncao);
+
+  var terceiraFuncao = f3(-1);
+  println("Valor da terceira função é: " + terceiraFuncao);
+
+
+  println("O fatorial do valor é: " + fatorial(primeiroValor));
   println("O que é isso: " + oqEhIsso(List(1, 2, 3)));
   println(oqEhIsso2("Scala"));
-  println("Valor da primeira função é: " + primeiraFuncao);
-  println("Valor da segunda função é: " + segundaFuncao);
-  println("Valor da terceira função é: " + terceiraFuncao);
+  println("Tratando Exceção: " + converter("-2"));
+  println("Tratando Exceção: " + converter("oi"));
+  println("Tratando Exceção: " + converterInt("1"));
+  println("Tratando Exceção: " + converterInt("Scala"));
 
   def soma(a: Int, b: Int): Int = return a + b;
 
@@ -94,5 +106,16 @@ object POOscala extends App {
     case x if (x > -1) => x * x;
   }
 
+  def converter(n: String): Int = try {
+    n.toInt
+  } catch {
+    case e: NumberFormatException => 0;
+    case _ => -1;
+  }
 
+  def converterInt(s: String): Option[Int] = try {
+    Some(s.toInt)
+  } catch {
+    case e: NumberFormatException => None;
+  }
 }
