@@ -193,7 +193,7 @@ object POOscala extends App {
   val anoIdade = diasIdade / 365
   val mesIdade = (diasIdade % 365) / 30
   val diaIdade = (diasIdade % 365) % 30
-  println(s"$anoIdade ano(s)")
-  println(s"$mesIdade mes(s)")
-  println(s"$diaIdade dia(s)")
+  println(s"$anoIdade anoIdade(s)")
+  println(s"$mesIdade mesIdade(s)")
+  println(s"$diaIdade diaIdade(s)")
 }
